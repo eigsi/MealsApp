@@ -59,27 +59,41 @@ class _CategoriesScreenState extends State<CategoriesScreen>
 
   @override
   Widget build(BuildContext context) {
+    final nonEmptyCategories = availableCategories.where((category) {
+      return widget.availableMeals
+          .any((meal) => meal.categories.contains(category.id));
+    }).toList();
+
     return AnimatedBuilder(
       animation: _animationController,
-      child: GridView(
-        padding: const EdgeInsets.all(24),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-        children: [
-          // availableCategories.map((category) => CategoryGridItem(category: category)).toList()
-          for (final category in availableCategories)
-            CategoryGridItem(
-              category: category,
-              onSelectCategory: () {
-                _selectCategory(context, category);
-              },
+      child: nonEmptyCategories.isEmpty
+          ? Center(
+              child: Text(
+                'Sorry, no meals correspond to your filters.',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
             )
-        ],
-      ),
+          : GridView(
+              padding: const EdgeInsets.all(24),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+              ),
+              children: [
+                for (final category in nonEmptyCategories)
+                  CategoryGridItem(
+                    category: category,
+                    onSelectCategory: () {
+                      _selectCategory(context, category);
+                    },
+                  )
+              ],
+            ),
       builder: (context, child) => SlideTransition(
         position: Tween(
           begin: const Offset(0, 0.3),

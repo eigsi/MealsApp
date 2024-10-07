@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-// import 'package:meals/screens/tabs.dart';
-// import 'package:meals/widgets/main_drawer.dart';
+import 'package:meals/models/meal.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:meals/providers/filters_provider.dart';
 
 class FiltersScreen extends ConsumerWidget {
@@ -106,6 +105,34 @@ class FiltersScreen extends ConsumerWidget {
             activeColor: Theme.of(context).colorScheme.tertiary,
             contentPadding: const EdgeInsets.only(left: 34, right: 22),
           ),
+          Padding(
+              padding: const EdgeInsets.only(top: 32.0),
+              child: CupertinoSegmentedControl<Complexity>(
+                groupValue: activeFilters[Filter.difficulty] ?? Complexity.all,
+                onValueChanged: (Complexity newValue) {
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(Filter.difficulty, newValue);
+                },
+                children: const {
+                  Complexity.all: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('All'),
+                  ),
+                  Complexity.simple: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('Easy'),
+                  ),
+                  Complexity.challenging: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('Challenging'),
+                  ),
+                  Complexity.hard: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('Hard'),
+                  ),
+                },
+              ))
         ],
       ),
     );
