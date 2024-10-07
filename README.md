@@ -8,6 +8,8 @@ there are different categories of dishes, and the user can filter the recipes at
 This project runs on `dart` and can be launched on the simulator of your choice using `Android studio` for Android devices, and `Xcode` pour IOS devices, and allows you to simulate a fonctional quizz application.
 - There are 10 categories, offering a total of 10 meals.
 - There is a favorite section where the user can find the recipes he saved.
+- Users can now select a meal difficulty level (easy, challenging, or hard) in the filters section.
+- In the categories screen, only categories containing meals that match the selected filters are displayed.
 
 
 ## Project Prerequisites
@@ -33,7 +35,7 @@ flutter run -d [device id]
 flutter hot reload
 ```
 
-## Quizz Material
+## Recipes Material
 The data of the app are in the file `/lib/data/dummy_data.dart`
 
 
