@@ -1,16 +1,45 @@
-# meals_app
+# Meals App IDATA2503
 
-A new Flutter project.
+The objective of this project is to create a cross-plateform recipe app using `Flutter`, available on Android and IOS .
+there are different categories of dishes, and the user can filter the recipes at his convenience.
 
-## Getting Started
+## Project Features
 
-This project is a starting point for a Flutter application.
+This project runs on `dart` and can be launched on the simulator of your choice using `Android studio` for Android devices, and `Xcode` pour IOS devices, and allows you to simulate a fonctional quizz application.
+- There are 10 categories, offering a total of 10 meals.
+- There is a favorite section where the user can find the recipes he saved.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Project Prerequisites
+You need at least one emulateur to run this project, like `Android studio` or `Xcode`. You also need to install flutter on your device.
+To set up your flutter environement, you can follow the [macOS Setup](https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/37213684#overview) or [Windows Setup](https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/37213680#overview) video from the course "A Complete Guide to the Flutter FrameWork on Udemy.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+1. **Clone the GitHub repo**
+```bash
+git clone https://github.com/eigsi/MealsApp.git
+cd MealsApp
+```
+2. **Look for a simulator device to use**
+```bash
+flutter devices
+```
+3. **run the Application**
+```bash
+flutter run -d [device id]
+```
+4. **refresh after changes**
+```bash
+flutter hot reload
+```
+
+## Quizz Material
+The data of the app are in the file `/lib/data/dummy_data.dart`
+
+
+## User Stories
+- The user can find recipes sort by categories and follow them
+- The user can see the time required for each recipe, their complexity and cost
+- The user can add meals to the favorite section to find them easily
+- The user can add filters to sort displayed meals
+
